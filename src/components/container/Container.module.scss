@@ -1,0 +1,13 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  width: 1400px;
+  margin: 0 auto;
+
+  .filters {
+    display: flex;
+    justify-content: space-between;
+    padding-top: 35px;
+
+  }
+}
