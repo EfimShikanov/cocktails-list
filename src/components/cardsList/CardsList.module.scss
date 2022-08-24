@@ -2,6 +2,13 @@
   padding: 110px 0;
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
-  row-gap: 130px;
+  justify-content: space-around;
+  row-gap: 110px;
+}
+
+.noResultsMessage {
+  text-align: center;
+  margin: 100px auto 0 auto;
+  font-size: 24px;
+  color: #FFFFFF;
 }
