@@ -1,8 +1,14 @@
 import React, { useState } from "react";
 import Card from "../card/Card";
-import S from "./CardsList.module.scss";
+import styles from "./CardsList.module.scss";
+import { sortCocktails } from "../../js/sortCocktails";
+import { searchCocktails } from "../../js/searchCocktails";
 
-const CardsList = ({ cocktails, sortingValue }) => {
+const CardsList = ({
+  cocktails,
+  sortingValue,
+  searchValue,
+}) => {
   const [deletedIDs, setDeletedIDs] = useState([]);
 
   const onClick = (id) => {
@@ -10,41 +16,30 @@ const CardsList = ({ cocktails, sortingValue }) => {
   };
 
   const renderCards = () => {
-    return cocktails
-      .sort((a, b) => {
-        if (sortingValue === "name") {
-          if (a.strDrink > b.strDrink) {
-            return 1;
-          } else {
-            return -1;
-          }
-        } else {
-          if (parseInt(a.idDrink) > parseInt(b.idDrink)) {
-            return 1;
-          } else {
-            return -1;
-          }
-        }
-      })
-      .filter((item) => {
+    let sortedCocktails = sortCocktails(cocktails, sortingValue);
+    sortedCocktails =
+      searchValue.length > 0
+        ? searchCocktails(sortedCocktails, searchValue)
+        : sortedCocktails;
+    if (sortedCocktails.length > 0) {
+      return sortedCocktails.map((item, index) => {
         if (!deletedIDs.includes(item.idDrink)) {
-          return item;
+          return (
+            <Card
+              key={index}
+              imageUrl={item.strDrinkThumb}
+              name={item.strDrink}
+              id={item.idDrink}
+              onClick={onClick}
+            />
+          );
         }
-      })
-      .map((item) => {
-        return (
-          <Card
-            key={item.idDrink}
-            imageUrl={item.strDrinkThumb}
-            name={item.strDrink}
-            id={item.idDrink}
-            onClick={onClick}
-          />
-        );
       });
+    } else
+      return <div className={styles.noResultsMessage}>Nothing was found</div>;
   };
 
-  return <div className={S.cardsList}>{renderCards()}</div>;
+  return <div className={styles.cardsList}>{renderCards()}</div>;
 };
 
 export default CardsList;

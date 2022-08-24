@@ -1,13 +1,13 @@
 import React from "react";
-import S from "./Card.module.scss";
+import styles from "./Card.module.scss";
 
 const Card = ({ name, imageUrl, id, onClick }) => {
   return (
-    <div className={S.card}>
-      <img className={S.cardImage} src={imageUrl} alt="cocktail" />
+    <div className={styles.card}>
+      <img className={styles.cardImage} src={imageUrl} alt="cocktail" />
 
-      <div className={S.cardText}>{name}</div>
-      <div className={S.cardCloseIcon} onClick={() => onClick(id)}>
+      <div className={styles.cardText}>{name}</div>
+      <div className={styles.cardCloseIcon} onClick={() => onClick(id)}>
         <svg
           xmlns="http://www.w3.org/2000/svg"
           height="18px"

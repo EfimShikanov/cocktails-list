@@ -10,19 +10,3 @@ export const fetchCocktails = (setCocktails, setIsReady) => {
       }
     });
 };
-
-export const searchByFirstLetter = (letter, setCocktails) => {
-  axios
-    .get(`https://www.thecocktaildb.com/api/json/v1/1/search.php?f=${letter}`)
-    .then((response) => {
-      setCocktails(response.data.drinks);
-    });
-};
-
-export const searchByName = (name, setCocktails) => {
-  axios
-    .get(`https://www.thecocktaildb.com/api/json/v1/1/search.php?s=${name}`)
-    .then((response) => {
-      setCocktails(response.data.drinks);
-    });
-};
