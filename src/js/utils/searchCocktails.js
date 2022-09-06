@@ -7,7 +7,7 @@ export const searchCocktails = (cocktails, searchValue) => {
     });
   } else {
     return cocktails.filter((item) => {
-      if (item.strDrink.includes(searchValue)) {
+      if (item.strDrink.toLowerCase().includes(searchValue.toLowerCase())) {
         return item;
       }
     });
