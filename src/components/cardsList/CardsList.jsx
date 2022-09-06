@@ -14,7 +14,7 @@ const CardsList = ({ cocktails, sortingValue, searchValue }) => {
   let sortedCocktails = sortCocktails(cocktails, sortingValue);
 
   sortedCocktails =
-    searchValue.length > 0
+    searchValue.length
       ? searchCocktails(sortedCocktails, searchValue)
       : sortedCocktails;
 
