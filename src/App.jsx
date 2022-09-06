@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
 import "./scss/main.scss";
-import { fetchCocktails } from "./js/getCocktails";
+import { fetchCocktails } from "./js/api/getCocktails";
 import Header from "./components/header/Header";
 import Input from "./components/input/Input";
-import Select from "./components/dropdown/Select";
+import Select from "./components/select/Select";
 import CardsList from "./components/cardsList/CardsList";
 
 const App = () => {
@@ -13,8 +13,8 @@ const App = () => {
   const [searchValue, setSearchValue] = useState("");
 
   const selectOptions = [
-    { value: "strDrink", name: "By name" },
-    { value: "idDrink", name: "By ID" },
+    { value: "strDrink", name: "Sort by name" },
+    { value: "idDrink", name: "Sort by ID" },
   ];
 
   useEffect(() => {
